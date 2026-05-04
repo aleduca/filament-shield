@@ -3,6 +3,7 @@
 namespace App\Providers\Filament;
 
 use App\Filament\Colors\ColorPanel;
+use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
 use App\Filament\Pages\EditProfile;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
