@@ -1,6 +1,9 @@
 <?php
 
 declare(strict_types=1);
+
+use App\Filament\Resources\Posts\PostResource;
+use App\Filament\Resources\Users\UserResource;
 use BezhanSalleh\FilamentShield\Resources\Roles\RoleResource;
 use Filament\Pages\Dashboard;
 use Filament\Widgets\AccountWidget;
@@ -17,6 +20,9 @@ return [
 	| customize the URL, choose whether to show model paths, group it under
 	| a cluster, and decide which permission tabs to display.
 	|
+	| Aqui você pode configurar o recurso de gerenciamento de funções(roles) integrado. Você pode
+	| personalizar a URL, escolher se deseja mostrar os caminhos do modelo, agrupá-lo em
+	| um cluster e decidir quais guias de permissão exibir.
 	*/
 
 	'shield_resource' => [
@@ -53,6 +59,9 @@ return [
 	| be used for role assignments and must implement the HasRoles trait
 	| provided by the Spatie\Permission package.
 	|
+	| Este valor contém o nome da classe do seu modelo de usuário. Este modelo será
+	| usado para atribuições de função(roles) e deve implementar a trait HasRoles
+	| fornecida pelo pacote Spatie\Permission.
 	*/
 
 	'auth_provider_model' => 'App\\Models\\User',
@@ -65,6 +74,10 @@ return [
 	| Here you may define a super admin that has unrestricted access to your
 	| application. You can choose to implement this via Laravel's gate system
 	| or as a traditional role with all permissions explicitly assigned.
+	|
+	| Aqui você pode definir um superadministrador que tenha acesso irrestrito ao seu
+	| aplicativo. Você pode optar por implementar isso através do sistema de controle de acesso do Laravel
+	| ou como uma função(role) tradicional com todas as permissões atribuídas explicitamente.
 	|
 	*/
 
@@ -83,6 +96,10 @@ return [
 	| When enabled, Shield will create a basic panel user role that can be
 	| assigned to users who should have access to your Filament panels but
 	| don't need any specific permissions beyond basic authentication.
+	|
+	|	Quando ativado, o Shield criará uma função(role) de usuário básica no painel que pode ser
+	| atribuída a usuários que devem ter acesso aos seus painéis do Filament, mas
+	| não precisam de nenhuma permissão específica além da autenticação básica.
 	|
 	*/
 
@@ -103,7 +120,7 @@ return [
 	| Supported formats: snake, kebab, pascal, camel, upper_snake, lower_snake
 	|
 	*/
-
+	// View:User
 	'permissions' => [
 		'separator' => ':',
 		'case' => 'pascal',
@@ -176,6 +193,21 @@ return [
 				'update',
 				'delete',
 			],
+
+			// UserResource::class => [
+			// 	'view',
+			// 	'create',
+			// 	'update',
+			// 	'delete',
+			// ],
+
+			// PostResource::class => [
+			// 	'viewAny',
+			// 	'view',
+			// 	'create',
+			// 	'update',
+			// 	'delete',
+			// ],
 		],
 		'exclude' => [
 			//
