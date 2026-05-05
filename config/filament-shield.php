@@ -193,21 +193,6 @@ return [
 				'update',
 				'delete',
 			],
-
-			// UserResource::class => [
-			// 	'view',
-			// 	'create',
-			// 	'update',
-			// 	'delete',
-			// ],
-
-			// PostResource::class => [
-			// 	'viewAny',
-			// 	'view',
-			// 	'create',
-			// 	'update',
-			// 	'delete',
-			// ],
 		],
 		'exclude' => [
 			//
