@@ -140,7 +140,7 @@ return [
 
 	'policies' => [
 		'path' => app_path('Policies'),
-		'merge' => true,
+		'merge' => false,
 		'generate' => true,
 		'methods' => [
 			'viewAny', 'view', 'create', 'update', 'delete', 'deleteAny', 'restore',
@@ -187,6 +187,22 @@ return [
 		'subject' => 'model',
 		'manage' => [
 			RoleResource::class => [
+				'viewAny',
+				'view',
+				'create',
+				'update',
+				'delete',
+			],
+
+			UserResource::class => [
+				'viewAny',
+				'view',
+				'create',
+				'update',
+				'delete',
+			],
+
+			PostResource::class => [
 				'viewAny',
 				'view',
 				'create',
