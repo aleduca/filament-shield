@@ -135,7 +135,7 @@ return [
 	| Shield can automatically generate Laravel policies for your resources.
 	| When merge is enabled, the methods below will be combined with any
 	| resource-specific methods you define in the resources section.
-	| https://filamentphp.com/docs/4.x/panels/resources/getting-started#authorization
+	| https://filamentphp.com/docs/3.x/panels/resources/getting-started#authorization
 	*/
 
 	'policies' => [

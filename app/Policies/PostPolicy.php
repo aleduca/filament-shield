@@ -10,31 +10,30 @@ use Illuminate\Auth\Access\HandlesAuthorization;
 
 class PostPolicy
 {
-    use HandlesAuthorization;
-    
-    public function viewAny(AuthUser $authUser): bool
-    {
-        return $authUser->can('ViewAny:Post');
-    }
+	use HandlesAuthorization;
 
-    public function view(AuthUser $authUser, Post $post): bool
-    {
-        return $authUser->can('View:Post');
-    }
+	public function viewAny(AuthUser $authUser): bool
+	{
+		return $authUser->can('ViewAny:Post');
+	}
 
-    public function create(AuthUser $authUser): bool
-    {
-        return $authUser->can('Create:Post');
-    }
+	public function view(AuthUser $authUser, Post $post): bool
+	{
+		return $authUser->can('View:Post');
+	}
 
-    public function update(AuthUser $authUser, Post $post): bool
-    {
-        return $authUser->can('Update:Post');
-    }
+	public function create(AuthUser $authUser): bool
+	{
+		return $authUser->can('Create:Post');
+	}
 
-    public function delete(AuthUser $authUser, Post $post): bool
-    {
-        return $authUser->can('Delete:Post');
-    }
+	public function update(AuthUser $authUser, Post $post): bool
+	{
+		return $authUser->can('Update:Post');
+	}
 
+	public function delete(AuthUser $authUser, Post $post): bool
+	{
+		return $authUser->can('Delete:Post');
+	}
 }

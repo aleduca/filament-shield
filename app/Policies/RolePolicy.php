@@ -10,31 +10,30 @@ use Illuminate\Auth\Access\HandlesAuthorization;
 
 class RolePolicy
 {
-    use HandlesAuthorization;
-    
-    public function viewAny(AuthUser $authUser): bool
-    {
-        return $authUser->can('ViewAny:Role');
-    }
+	use HandlesAuthorization;
 
-    public function view(AuthUser $authUser, Role $role): bool
-    {
-        return $authUser->can('View:Role');
-    }
+	public function viewAny(AuthUser $authUser): bool
+	{
+		return $authUser->can('ViewAny:Role');
+	}
 
-    public function create(AuthUser $authUser): bool
-    {
-        return $authUser->can('Create:Role');
-    }
+	public function view(AuthUser $authUser, Role $role): bool
+	{
+		return $authUser->can('View:Role');
+	}
 
-    public function update(AuthUser $authUser, Role $role): bool
-    {
-        return $authUser->can('Update:Role');
-    }
+	public function create(AuthUser $authUser): bool
+	{
+		return $authUser->can('Create:Role');
+	}
 
-    public function delete(AuthUser $authUser, Role $role): bool
-    {
-        return $authUser->can('Delete:Role');
-    }
+	public function update(AuthUser $authUser, Role $role): bool
+	{
+		return $authUser->can('Update:Role');
+	}
 
+	public function delete(AuthUser $authUser, Role $role): bool
+	{
+		return $authUser->can('Delete:Role');
+	}
 }
