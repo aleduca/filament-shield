@@ -3,8 +3,9 @@
 namespace App\Providers\Filament;
 
 use App\Filament\Colors\ColorPanel;
-use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
 use App\Filament\Pages\EditProfile;
+use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
+use Filament\Actions\Action;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -12,6 +13,7 @@ use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Filament\Pages\Dashboard;
 use Filament\Panel;
 use Filament\PanelProvider;
+use Filament\Support\Icons\Heroicon;
 use Filament\Widgets\AccountWidget;
 use Filament\Widgets\FilamentInfoWidget;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
@@ -19,6 +21,7 @@ use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 
 class AdminPanelProvider extends PanelProvider
@@ -50,6 +53,16 @@ class AdminPanelProvider extends PanelProvider
 			->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')
 			->pages([
 				Dashboard::class,
+			])
+			->userMenuItems([
+				Action::make('Roles')
+				->label(function () {
+					$roles = Auth::user()->getRoleNames();
+
+					return $roles->isNotEmpty() ? $roles->implode(',') : 'Roles';
+				})
+				->url(fn () => route('filament.admin.resources.shield.roles.index'))
+				->icon(Heroicon::ShieldCheck),
 			])
 			->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\Filament\Widgets')
 			->widgets([
