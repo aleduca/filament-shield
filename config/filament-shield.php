@@ -187,6 +187,7 @@ return [
 		'subject' => 'model',
 		'manage' => [
 			RoleResource::class => [
+				'deleteAny',
 				'viewAny',
 				'view',
 				'create',
@@ -195,6 +196,7 @@ return [
 			],
 
 			UserResource::class => [
+				'deleteAny',
 				'viewAny',
 				'view',
 				'create',
@@ -203,6 +205,7 @@ return [
 			],
 
 			PostResource::class => [
+				'deleteAny',
 				'viewAny',
 				'view',
 				'create',

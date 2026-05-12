@@ -10,6 +10,9 @@ use App\Filament\Resources\Users\Tables\UsersTableColumns;
 use App\Filament\Resources\Users\Tables\UsersTableFilters;
 use App\Models\Post;
 use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteAction;
+use Filament\Actions\EditAction;
+use Filament\Actions\ViewAction;
 use Filament\Tables\Enums\FiltersLayout;
 use Filament\Tables\Table;
 
@@ -20,15 +23,15 @@ class UsersTable
 		$totalPosts = Post::count();
 
 		return $table
-			->recordUrl(
-				fn ($record): string => route('filament.admin.resources.users.view', ['record' => $record]),
-			)
+			// ->recordUrl(
+			// 	fn ($record): string => route('filament.admin.resources.users.view', ['record' => $record]),
+			// )
 			->columns(UsersTableColumns::make($totalPosts))->deferColumnManager(false)
 			->filters(UsersTableFilters::make(), layout: FiltersLayout::AboveContent)->deferFilters(false)
 			->recordActions([
-				ViewUserAction::make($totalPosts),
-				EditUserAction::make(),
-				DeleteUserAction::make(),
+				ViewAction::make($totalPosts),
+				EditAction::make(),
+				DeleteAction::make(),
 			])
 			->toolbarActions([
 				BulkActionGroup::make([

@@ -59,7 +59,7 @@ class AdminPanelProvider extends PanelProvider
 				->label(function () {
 					$roles = Auth::user()->getRoleNames();
 
-					return $roles->isNotEmpty() ? $roles->implode(',') : 'Roles';
+					return $roles->isNotEmpty() ? 'Roles: ' . $roles->implode(',') : 'Roles';
 				})
 				->url(fn () => route('filament.admin.resources.shield.roles.index'))
 				->icon(Heroicon::ShieldCheck),
