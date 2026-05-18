@@ -4,6 +4,8 @@ namespace App\Providers\Filament;
 
 use App\Filament\Colors\ColorPanel;
 use App\Filament\Pages\EditProfile;
+use App\Filament\Widgets\LatestUsers;
+use App\Filament\Widgets\Stats;
 use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
 use Filament\Actions\Action;
 use Filament\Http\Middleware\Authenticate;
@@ -67,7 +69,9 @@ class AdminPanelProvider extends PanelProvider
 			->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\Filament\Widgets')
 			->widgets([
 				AccountWidget::class,
-				FilamentInfoWidget::class,
+				Stats::class,
+				LatestUsers::class,
+				// FilamentInfoWidget::class,
 			])
 			->middleware([
 				EncryptCookies::class,
