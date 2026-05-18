@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 use App\Filament\Resources\Posts\PostResource;
+use App\Filament\Resources\Roles\RoleResource;
 use App\Filament\Resources\Users\UserResource;
-use BezhanSalleh\FilamentShield\Resources\Roles\RoleResource;
 use Filament\Pages\Dashboard;
 use Filament\Widgets\AccountWidget;
 use Filament\Widgets\FilamentInfoWidget;

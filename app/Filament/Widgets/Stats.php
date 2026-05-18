@@ -18,15 +18,15 @@ class Stats extends StatsOverviewWidget
 	protected static bool $isDiscovered = false;
 	protected ?string $pollingInterval = '50s';
 
-	// public static function canView(): bool
-	// {
-	// 	return Auth::user()->hasRole(['super_admin']);
-	// }
-
 	protected function getColumns(): int | array | null
 	{
 		return 2;
 	}
+
+	// public static function canView(): bool
+	// {
+	// 	return Auth::user()->hasRole('super_admin');
+	// }
 
 	protected function getStats(): array
 	{

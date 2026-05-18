@@ -11,12 +11,6 @@ use Illuminate\Support\Facades\Auth;
 class Reports extends Page
 {
 	use HasPageShield;
-
-	// public static function canAccess(): bool
-	// {
-	// 	return Auth::user()->hasRole(['super_admin']);
-	// }
-
 	protected string $view = 'filament.pages.reports';
 
 	protected static string|BackedEnum|null $navigationIcon = Heroicon::DocumentCheck;
@@ -24,4 +18,9 @@ class Reports extends Page
 	protected static ?string $navigationLabel = 'Reports';
 
 	protected static ?int $navigationSort = 3;
+
+	// public static function canAccess(): bool
+	// {
+	// 	return Auth::user()->hasRole(['super_admin', 'Editor']);
+	// }
 }
