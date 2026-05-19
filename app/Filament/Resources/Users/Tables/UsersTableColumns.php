@@ -11,7 +11,7 @@ use Filament\Tables\Columns\ToggleColumn;
 
 class UsersTableColumns
 {
-	public static function make($totalPosts)
+	public static function make()
 	{
 		return [
 			TextColumn::make('name')->sortable()->searchable(),

@@ -20,13 +20,11 @@ class UsersTable
 {
 	public static function configure(Table $table): Table
 	{
-		$totalPosts = Post::count('posts.id');
-
 		return $table
-			->columns(UsersTableColumns::make($totalPosts))->deferColumnManager(false)
+			->columns(UsersTableColumns::make())->deferColumnManager(false)
 			->filters(UsersTableFilters::make(), layout: FiltersLayout::AboveContent)->deferFilters(false)
 			->recordActions([
-				ViewAction::make($totalPosts),
+				ViewAction::make(),
 				DeleteAction::make(),
 			])
 			->toolbarActions([
