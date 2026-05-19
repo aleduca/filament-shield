@@ -47,12 +47,12 @@ class UserForm
 
 				Section::make(function ($context) {
 					if ($context === 'create') {
-						return 'Password and Password Confirmation';
+						return 'Password, Password Confirmation and Roles';
 					}
 
 					return 'Password';
 				})
-				->description('Password')
+				->description('Password and Roles')
 				->schema([
 					TextInput::make('password')
 						->password()
@@ -73,6 +73,12 @@ class UserForm
 						->minLength(3)
 						->maxLength(15)
 						->required(),
+
+					Select::make('roles')
+					->relationship('roles', 'name')
+					->preload()
+					->searchable()
+					->multiple(),
 				]),
 
 				Section::make('Age, Gender and Admin')
