@@ -5,7 +5,6 @@ namespace App\Filament\Resources\Users\Schemas;
 use App\Filament\Resources\Users\UserResource;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Toggle;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Components\Text;
@@ -47,12 +46,12 @@ class UserForm
 
 				Section::make(function ($context) {
 					if ($context === 'create') {
-						return 'Password, Password Confirmation and Roles';
+						return 'Password and Password Confirmation';
 					}
 
 					return 'Password';
 				})
-				->description('Password and Roles')
+				->description('Password')
 				->schema([
 					TextInput::make('password')
 						->password()
@@ -73,9 +72,19 @@ class UserForm
 						->minLength(3)
 						->maxLength(15)
 						->required(),
+				]),
 
+				Section::make('Roles and Permissions')
+				->description('Roles and permissions to user')
+				->schema([
 					Select::make('roles')
 					->relationship('roles', 'name')
+					->preload()
+					->searchable()
+					->multiple(),
+
+					Select::make('permissions')
+					->relationship('permissions', 'name')
 					->preload()
 					->searchable()
 					->multiple(),

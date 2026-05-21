@@ -30,3 +30,7 @@
 .tox-collection__item-label * {
   background: #222f3e !important;
 }
+
+.tippy-box {
+  max-width: none !important;
+}

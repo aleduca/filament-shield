@@ -2,12 +2,8 @@
 
 namespace App\Filament\Resources\Users\Tables;
 
-use App\Filament\Tables\Columns\PercentPostsColumn;
 use Filament\Support\Icons\Heroicon;
-use Filament\Tables\Columns\SelectColumn;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Columns\TextInputColumn;
-use Filament\Tables\Columns\ToggleColumn;
 
 class UsersTableColumns
 {
@@ -27,6 +23,16 @@ class UsersTableColumns
 						? 'gray'
 						: 'success'
 				),
+			TextColumn::make('permissions.name')
+			->badge()
+			->default(0)
+			->label('Permissions')
+			->tooltip(fn ($record) => $record->getPermissionNames()->map(fn ($permission) => $permission))
+			->color(
+				fn ($state) => $state === 0
+					? 'gray'
+					: 'warning'
+			)->getStateUsing(fn ($record) => $record->getPermissionNames()->count()),
 			TextColumn::make('posts_count')->label('Posts')->icon(Heroicon::ClipboardDocumentList),
 			TextColumn::make('created_at')->label('Created')->dateTime('d/m/Y')->toggleable(isToggledHiddenByDefault:true)->alignCenter(),
 			TextColumn::make('updated_at')->label('Updated')->dateTime('d/m/Y')->toggleable(isToggledHiddenByDefault:true),
