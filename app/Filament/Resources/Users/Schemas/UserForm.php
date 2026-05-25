@@ -10,6 +10,7 @@ use Filament\Schemas\Components\Section;
 use Filament\Schemas\Components\Text;
 use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Schema;
+use Illuminate\Support\Facades\Lang;
 use Illuminate\Validation\Rule;
 
 class UserForm
@@ -85,6 +86,16 @@ class UserForm
 
 					Select::make('permissions')
 					->relationship('permissions', 'name')
+					->getOptionLabelFromRecordUsing(function ($record) {
+						// form-permissions.View:User
+						$key = 'form-permissions.' . $record->name;
+
+						if (Lang::has($key)) {
+							return __($key);
+						}
+
+						return $record->name;
+					})
 					->preload()
 					->searchable()
 					->multiple(),
