@@ -19,6 +19,12 @@ class Reports extends Page
 
 	protected static ?int $navigationSort = 3;
 
+	public function export()
+	{
+		$this->authorize('Export:User');
+		dd('export user');
+	}
+
 	// public static function canAccess(): bool
 	// {
 	// 	return Auth::user()->hasRole(['super_admin', 'Editor']);
